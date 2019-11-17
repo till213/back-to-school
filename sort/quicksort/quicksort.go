@@ -49,9 +49,7 @@ func quickSort(array []int) {
 
 func main() {
 	array := [10]int{4, 2, 3, 1, 6, 9, 8, 7, 0, 5}
+	fmt.Println("\n--- Unsorted --- \n", array)
 	quickSort(array[:])
-	for _, n := range array {
-		fmt.Printf("%d ", n)
-	}
-	fmt.Println("")
+	fmt.Println("\n--- Sorted --- \n", array)
 }
