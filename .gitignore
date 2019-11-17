@@ -10,3 +10,6 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+sort/quicksort/quicksort
+bits/swap/swap
+bits/population/population
