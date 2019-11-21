@@ -1,4 +1,4 @@
-# back-to-school
+# Back to School
 ## Algorithms &amp; data structures
 
 Implementation of various algorithms and data structures, with the aim to learn Go.
