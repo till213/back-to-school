@@ -6,7 +6,8 @@ import (
 	"time"
 )
 
-func skipZeros(x uint64) int {
+// Returns the population count for w, using Skip Zeros.
+func SkipZeros(x uint64) int {
 	c := 0
 	for x != 0 {
 		c++
@@ -15,7 +16,8 @@ func skipZeros(x uint64) int {
 	return c
 }
 
-func logBitSum(w uint64) int {
+// LogBitSum returns the population count for w, using Logarithmic Bitsum.
+func LogBitSum(w uint64) int {
 	// Iteration in log2(n), n=64 -> 6 iterations
 	mask := [6]uint64{
 		0x5555555555555555, // 01010101...01010101
@@ -51,10 +53,10 @@ func main() {
 	start := time.Now()
 	c1, c2, c3, c4 := 0, 0, 0, 0
 	for i := 0; i < N; i++ {
-		c1 = skipZeros(all)
-		c2 = skipZeros(half)
-		c3 = skipZeros(sparse)
-		c4 = skipZeros(none)
+		c1 = SkipZeros(all)
+		c2 = SkipZeros(half)
+		c3 = SkipZeros(sparse)
+		c4 = SkipZeros(none)
 	}
 	end := time.Now()
 	fmt.Printf("SkipZeros: c1=%d c2=%d c3=%d c4=%d elapsed: %v\n",
@@ -63,10 +65,10 @@ func main() {
 	start = time.Now()
 	c1, c2, c3, c4 = 0, 0, 0, 0
 	for i := 0; i < N; i++ {
-		c1 = logBitSum(all)
-		c2 = logBitSum(half)
-		c3 = logBitSum(sparse)
-		c4 = logBitSum(none)
+		c1 = LogBitSum(all)
+		c2 = LogBitSum(half)
+		c3 = LogBitSum(sparse)
+		c4 = LogBitSum(none)
 	}
 	end = time.Now()
 	fmt.Printf("logBitSum: c1=%d c2=%d c3=%d c4=%d elapsed: %v\n",
