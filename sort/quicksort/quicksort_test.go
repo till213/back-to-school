@@ -1,27 +1,61 @@
 package main
 
 import (
-	"back-to-school/data/array"
-	"testing"
 	"fmt"
+	"testing"
+
+	"github.com/till213/back-to-school/data/array"
 )
 
-func TestQuickSort#Random(t *testing.T) {
-	s := array.Random(16, true);
-	fmt.PrintLn("Unsorted", s)
-	QuickSort(s);
-	fmt.PrintLn("Sorted", s)
+const n = 1024
+
+func TestQuickSortRandom(t *testing.T) {
+	s := array.Random(n)
+	fmt.Println("Unsorted", s)
+	QuickSort(s)
+	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func BenchmarkSkipZeros(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		for _, test := range testData {
-			SkipZeros(test.w)
-		}
+func TestQuickSortSortedAscending(t *testing.T) {
+	s := array.Sorted(n, true)
+	fmt.Println("Sorted ascending", s)
+	QuickSort(s)
+	fmt.Println("Sorted", s)
+	if !array.IsSorted(s, true) {
+		t.Errorf("Not sorted")
 	}
 }
 
+func TestQuickSortSortedDescending(t *testing.T) {
+	s := array.Sorted(n, false)
+	fmt.Println("Sorted descending", s)
+	QuickSort(s)
+	fmt.Println("Sorted", s)
+	if !array.IsSorted(s, true) {
+		t.Errorf("Not sorted")
+	}
+}
 
+func BenchmarkQuickSortRandom(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		s := array.Random(n)
+		QuickSort(s)
+	}
+}
+
+func BenchmarkQuickSortAscending(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		s := array.Sorted(n, true)
+		QuickSort(s)
+	}
+}
+
+func BenchmarkQuickSortDescending(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		s := array.Sorted(n, false)
+		QuickSort(s)
+	}
+}
