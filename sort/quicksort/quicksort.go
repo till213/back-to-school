@@ -4,28 +4,28 @@ import (
 	"fmt"
 )
 
-func guessMedian(array []int) int {
+func guessMedian(s []int) int {
 	// The most simple way to guesstimate the median
-	m := len(array) / 2
-	return array[m]
+	m := len(s) / 2
+	return s[m]
 }
 
-func partition(array []int) (int, int) {
+func partition(s []int) (int, int) {
 	var m int
 
-	m = guessMedian(array)
+	m = guessMedian(s)
 	i := 0
-	j := len(array) - 1
+	j := len(s) - 1
 	for i <= j {
 
-		for array[i] < m {
+		for s[i] < m {
 			i++
 		}
-		for array[j] > m {
+		for s[j] > m {
 			j--
 		}
 		if i <= j {
-			array[i], array[j] = array[j], array[i]
+			s[i], s[j] = s[j], s[i]
 			i++
 			j--
 		}
@@ -36,13 +36,14 @@ func partition(array []int) (int, int) {
 
 }
 
-func quickSort(array []int) {
-	i, j := partition(array)
+// QuickSort sorts slice s in ascending order. Unstable sort.
+func QuickSort(s []int) {
+	i, j := partition(s)
 	if j > 0 {
-		quickSort(array[0 : j+1])
+		QuickSort(s[0 : j+1])
 	}
-	if i < len(array) {
-		quickSort(array[i:])
+	if i < len(s) {
+		QuickSort(s[i:])
 	}
 
 }
@@ -50,6 +51,6 @@ func quickSort(array []int) {
 func main() {
 	array := [10]int{4, 2, 3, 1, 6, 9, 8, 7, 0, 5}
 	fmt.Println("\n--- Unsorted --- \n", array)
-	quickSort(array[:])
+	QuickSort(array[:])
 	fmt.Println("\n--- Sorted --- \n", array)
 }
