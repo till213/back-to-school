@@ -10,8 +10,11 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# Binaries (on Mac/Linux)
 sort/quicksort/quicksort
 bits/swap/swap
 bits/population/population
 graph/bmm/bmm
 recursion/toh/toh
+apps/permutation/strperm/strperm
