@@ -12,9 +12,15 @@
 *.out
 
 # Binaries (on Mac/Linux)
-sort/quicksort/quicksort
+apps/permutation/strperm/strperm
 bits/swap/swap
 bits/population/population
 graph/bmm/bmm
+number/fibonacci/fibonacci
+number/prime/prime
 recursion/toh/toh
-apps/permutation/strperm/strperm
+sort/insertsort/insertsort
+sort/quicksort/quicksort
+struct/heap/heap
+struct/prioqueue/prioqueue
+

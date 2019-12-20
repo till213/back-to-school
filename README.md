@@ -6,5 +6,5 @@ Implementation of various algorithms and data structures, with the aim to learn 
 ## References
 
 * Algorithms & Data Structures, Jürg Nievergelt, Klaus H. Hinrichts, 1993 Prentice-Hall
-* Another reference
+* Introduction to Algorithms, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, 1997 MIT Press
 
