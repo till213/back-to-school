@@ -1,11 +1,11 @@
 package main
 
 import (
-	"math"
+	"errors"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
-	"errors"
 )
 
 // Prime number sieve of Eratosthenes
@@ -17,10 +17,10 @@ func sieve(n int) {
 	for i := 0; i < n; i++ {
 		sieve[i] = true
 	}
-	sqrtn = (int)(math.Floor(math.Sqrt((float64)(n))))
-	for p = 2; p <= sqrtn;  {		
-		for i = p * p; i <= n;  i = i + p {
-			sieve[i-1] = false 
+	sqrtn = int(math.Floor(math.Sqrt(float64(n))))
+	for p = 2; p <= sqrtn; {
+		for i = p * p; i <= n; i = i + p {
+			sieve[i-1] = false
 		}
 		for {
 			p++
@@ -50,6 +50,6 @@ func main() {
 	if err == nil {
 		sieve(n)
 	} else {
-		fmt.Print("Parse error: ", err)
+		fmt.Println("Parse error: ", err)
 	}
 }
