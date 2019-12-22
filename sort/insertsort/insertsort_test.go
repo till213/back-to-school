@@ -2,59 +2,59 @@ package main
 
 import (
 	"fmt"
-	"testing"
 	"github.com/till213/back-to-school/data/array"
+	"testing"
 )
 
 const n = 1024
 
-func TestQuickSortRandom(t *testing.T) {
+func TestInsertionSortRandom(t *testing.T) {
 	s := array.Random(n)
 	fmt.Println("Unsorted", s)
-	QuickSort(s)
+	InsertionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func TestQuickSortSortedAscending(t *testing.T) {
+func TestInsertionSortSortedAscending(t *testing.T) {
 	s := array.Sorted(n, true)
 	fmt.Println("Sorted ascending", s)
-	QuickSort(s)
+	InsertionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func TestQuickSortSortedDescending(t *testing.T) {
+func TestInsertionSortSortedDescending(t *testing.T) {
 	s := array.Sorted(n, false)
 	fmt.Println("Sorted descending", s)
-	QuickSort(s)
+	InsertionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func BenchmarkQuickSortRandom(b *testing.B) {
+func BenchmarkInsertionSortRandom(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Random(n)
-		QuickSort(s)
+		InsertionSort(s)
 	}
 }
 
-func BenchmarkQuickSortAscending(b *testing.B) {
+func BenchmarkInsertionSortAscending(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Sorted(n, true)
-		QuickSort(s)
+		InsertionSort(s)
 	}
 }
 
-func BenchmarkQuickSortDescending(b *testing.B) {
+func BenchmarkInsertionSortDescending(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Sorted(n, false)
-		QuickSort(s)
+		InsertionSort(s)
 	}
 }
