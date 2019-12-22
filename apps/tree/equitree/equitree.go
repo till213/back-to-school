@@ -55,4 +55,7 @@ func main() {
 	t2 := tree.New(1)
 	same := Same(t1, t2)
 	fmt.Println("Same: ", same)
+	t2 = tree.New(2)
+	same = Same(t1, t2)
+	fmt.Println("Same: ", same)
 }

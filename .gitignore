@@ -18,6 +18,7 @@ bits/swap/swap
 bits/population/population
 graph/bmm/bmm
 number/fibonacci/fibonacci
+number/poorman/poorman
 number/prime/prime
 recursion/toh/toh
 sort/insertsort/insertsort
