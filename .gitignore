@@ -21,6 +21,7 @@ number/fibonacci/fibonacci
 number/poorman/poorman
 number/prime/prime
 recursion/toh/toh
+sort/heapsort/heapsort
 sort/insertsort/insertsort
 sort/mergesort/mergesort
 sort/quicksort/quicksort

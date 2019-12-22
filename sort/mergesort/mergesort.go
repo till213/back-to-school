@@ -20,7 +20,7 @@ func combine(arr []int, l, r, m int) {
 	}
 }
 
-// MergeSort sorts the array arr. Stable sort. O(n * log(n))
+// MergeSort sorts the array arr. Stable sort. O(n log(n)). Auxiliary space O(n)
 // Suitable for sorting "external memory" (where "disk IO" is expensive)
 // https://en.wikipedia.org/wiki/Merge_sort
 func MergeSort(arr []int, l, r int) {
