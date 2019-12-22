@@ -23,6 +23,7 @@ number/prime/prime
 recursion/toh/toh
 sort/insertsort/insertsort
 sort/quicksort/quicksort
+sort/selectsort/selectsort
 struct/heap/heap
 struct/prioqueue/prioqueue
 

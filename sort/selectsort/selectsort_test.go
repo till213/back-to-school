@@ -8,53 +8,53 @@ import (
 
 const n = 1024
 
-func TestQuickSortRandom(t *testing.T) {
+func TestSelectionSortRandom(t *testing.T) {
 	s := array.Random(n)
 	fmt.Println("Unsorted", s)
-	QuickSort(s)
+	SelectionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func TestQuickSortSortedAscending(t *testing.T) {
+func TestSelectionSortSortedAscending(t *testing.T) {
 	s := array.Sorted(n, true)
 	fmt.Println("Sorted ascending", s)
-	QuickSort(s)
+	SelectionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func TestQuickSortSortedDescending(t *testing.T) {
+func TestSelectionSortSortedDescending(t *testing.T) {
 	s := array.Sorted(n, false)
 	fmt.Println("Sorted descending", s)
-	QuickSort(s)
+	SelectionSort(s)
 	fmt.Println("Sorted", s)
 	if !array.IsSorted(s, true) {
 		t.Errorf("Not sorted")
 	}
 }
 
-func BenchmarkQuickSortRandom(b *testing.B) {
+func BenchmarkSelectionSortRandom(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Random(n)
-		QuickSort(s)
+		SelectionSort(s)
 	}
 }
 
-func BenchmarkQuickSortAscending(b *testing.B) {
+func BenchmarkSelectionSortAscending(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Sorted(n, true)
-		QuickSort(s)
+		SelectionSort(s)
 	}
 }
 
-func BenchmarkQuickSortDescending(b *testing.B) {
+func BenchmarkSelectionSortDescending(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		s := array.Sorted(n, false)
-		QuickSort(s)
+		SelectionSort(s)
 	}
 }
