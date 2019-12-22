@@ -22,6 +22,7 @@ number/poorman/poorman
 number/prime/prime
 recursion/toh/toh
 sort/insertsort/insertsort
+sort/mergesort/mergesort
 sort/quicksort/quicksort
 sort/selectsort/selectsort
 struct/heap/heap
