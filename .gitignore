@@ -27,5 +27,6 @@ sort/mergesort/mergesort
 sort/quicksort/quicksort
 sort/selectsort/selectsort
 struct/heap/heap
+struct/list/traverse/traverse
 struct/prioqueue/prioqueue
 
