@@ -12,6 +12,10 @@
 *.out
 
 # Binaries (on Mac/Linux)
+apps/array/distinctelem/distinctelem
+apps/array/maxsum/maxsum
+apps/dynamicprog/jumpball/jumpball
+apps/dynamicprog/lrucache/lrucache
 apps/permutation/strperm/strperm
 apps/tree/equitree/equitree
 bits/swap/swap
