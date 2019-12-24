@@ -16,6 +16,8 @@ apps/array/distinctelem/distinctelem
 apps/array/maxsum/maxsum
 apps/dynamicprog/jumpball/jumpball
 apps/dynamicprog/lrucache/lrucache
+apps/permutation/bracket/bracket
+apps/permutation/rot13reader/rot13reader
 apps/permutation/strperm/strperm
 apps/tree/equitree/equitree
 bits/swap/swap
@@ -28,6 +30,7 @@ recursion/toh/toh
 sort/heapsort/heapsort
 sort/insertsort/insertsort
 sort/mergesort/mergesort
+sort/orderstat/quickselect/quickselect
 sort/quicksort/quicksort
 sort/selectsort/selectsort
 struct/heap/heap
