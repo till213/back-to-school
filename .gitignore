@@ -16,6 +16,7 @@ apps/array/distinctelem/distinctelem
 apps/array/maxsum/maxsum
 apps/dynamicprog/jumpball/jumpball
 apps/dynamicprog/lrucache/lrucache
+apps/histvolume/histvolume
 apps/permutation/bracket/bracket
 apps/permutation/rot13reader/rot13reader
 apps/permutation/strperm/strperm
