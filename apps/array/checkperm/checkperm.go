@@ -36,12 +36,13 @@ func isPermutation(s1, s2 string) bool {
 
 func isPermutation2(s1, s2 string) bool {
 	if len(s1) == len(s2) {
-		sm := make(map[rune]bool)
+		sm := make(map[rune]int)
 		for _, r1 := range s1 {
-			sm[r1] = true
+			sm[r1]++
 		}
 		for _, r2 := range s2 {
-			if !sm[r2] {
+			sm[r2]--
+			if sm[r2] < 0 {
 				return false
 			}
 		}
