@@ -39,3 +39,4 @@ struct/heap/heap
 struct/list/traverse/traverse
 struct/prioqueue/prioqueue
 
+apps/array/unique/unique
