@@ -41,3 +41,4 @@ struct/prioqueue/prioqueue
 
 apps/array/unique/unique
 apps/array/checkperm/checkperm
+apps/array/urlify/urlify
