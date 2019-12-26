@@ -43,3 +43,4 @@ apps/array/unique/unique
 apps/array/checkperm/checkperm
 apps/array/urlify/urlify
 apps/array/palindromeperm/palindromeperm
+bits/bitmagic/bitmagic
