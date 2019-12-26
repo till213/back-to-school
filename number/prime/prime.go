@@ -6,6 +6,8 @@ import (
 	"math"
 	"os"
 	"strconv"
+
+	"github.com/yourbasic/bit"
 )
 
 // Prime number sieve of Eratosthenes
@@ -14,7 +16,7 @@ func sieve(n int) {
 	var p, sqrtn, i int
 
 	sieve = make([]bool, n)
-	for i := 0; i < n; i++ {
+	for i := 1; i < n; i++ {
 		sieve[i] = true
 	}
 	sqrtn = int(math.Floor(math.Sqrt(float64(n))))
@@ -39,6 +41,19 @@ func sieve(n int) {
 
 }
 
+// Prime number sieve of Eratosthenes
+func bitsSieve(n int) {
+
+	sieve := bit.New().AddRange(2, n)
+	sqrtN := int(math.Sqrt(float64(n)))
+	for p := 2; p <= sqrtN; p = sieve.Next(p) {
+		for k := p * p; k < n; k += p {
+			sieve.Delete(k)
+		}
+	}
+	fmt.Println(sieve)
+}
+
 func main() {
 	var n int
 	var err error
@@ -49,6 +64,7 @@ func main() {
 	}
 	if err == nil {
 		sieve(n)
+		bitsSieve(n)
 	} else {
 		fmt.Println("Parse error: ", err)
 	}
