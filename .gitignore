@@ -40,3 +40,4 @@ struct/list/traverse/traverse
 struct/prioqueue/prioqueue
 
 apps/array/unique/unique
+apps/array/checkperm/checkperm
