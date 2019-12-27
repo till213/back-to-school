@@ -12,8 +12,22 @@
 *.out
 
 # Binaries (on Mac/Linux)
+
+apps/array/unique/unique
+apps/array/checkperm/checkperm
+apps/array/distinctelem/distinctelem
+apps/array/maxsum/maxsum
+apps/array/urlify/urlify
+apps/array/palindromeperm/palindromeperm
+apps/dynamicprog/jumpball/jumpball
+apps/dynamicprog/lrucache/lrucache
+apps/histvolume/histvolume
+apps/permutation/bracket/bracket
+apps/permutation/rot13reader/rot13reader
 apps/permutation/strperm/strperm
 apps/tree/equitree/equitree
+bits/bitmagic/bitmagic
+apps/array/oneaway/oneaway
 bits/swap/swap
 bits/population/population
 graph/bmm/bmm
@@ -21,12 +35,13 @@ number/fibonacci/fibonacci
 number/poorman/poorman
 number/prime/prime
 recursion/toh/toh
+sort/countsort/countsort
 sort/heapsort/heapsort
 sort/insertsort/insertsort
 sort/mergesort/mergesort
+sort/orderstat/quickselect/quickselect
 sort/quicksort/quicksort
 sort/selectsort/selectsort
 struct/heap/heap
 struct/list/traverse/traverse
 struct/prioqueue/prioqueue
-

@@ -12,7 +12,7 @@
             "mode": "auto",
             "program": "${fileDirname}",
             "env": {},
-            "args": ["5"]
+            "args": ["2"]
         }
     ]
 }
