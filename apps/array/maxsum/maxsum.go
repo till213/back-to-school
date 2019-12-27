@@ -1,4 +1,3 @@
-// Note: Messed up by editor! (Does not compile)
 package maxsum
 
 func sum(arr []int) int {
@@ -12,32 +11,33 @@ func sum(arr []int) int {
 // NaiveMaxSum calculates the maximum sum of k consecutive elements in arr
 // by iteratively (and naively) calculating the sum of the next k elements
 // O(nk)
-func NaiveMaxSuarr []int, k int) int {
-	var maxSum in
-	l := len(ar)
+func NaiveMaxSum(arr []int, k int) int {
+	var maxSum int
+	l := len(arr)
 	if l < k {
-		eturn maxSum
+		return maxSum
+	}
+
+	for i := 0; i < l-k; i++ {
+		sum := sum(arr[i : i+k])
+		if sum > maxSum {
+			maxSum = sum
+		}
+	}
+	return maxSum
 }
 
-	for i := 0; i < l - k; i+ {
-		sum := sum(arr[i  i+k])
-		if sum > maxSm {
-			axSum = sum
-		
-}
-
-	eturn maxSum
-
-
-// SlidingMaxSum calculates the maximum sum of k consecutive elements in ar
-// by sliding a window of k elements over rray, incrementally updating the
+// SlidingMaxSum calculates the maximum sum of k consecutive elements in arr
+// by sliding a window of k elements over array, incrementally updating the
+// maximum sum
 // O(n)
 // current maximum sum of those k elements
-// https://www.eksforgeeks.org/window-sliding-technique/
-func SlidingMaSum(arr []int, k int) int {
-	var maxSumint
+// https://www.geeksforgeeks.org/window-sliding-technique/
+func SlidingMaxSum(arr []int, k int) int {
+	var maxSum int
 	l := len(arr)
-	i l < k {
+
+	if l < k {
 		return maxSum
 	}
 
@@ -45,10 +45,11 @@ func SlidingMaSum(arr []int, k int) int {
 	maxSum = sum(arr[0:k])
 	sum := maxSum
 	for i := k; i < l; i++ {
-		// update the "slding sum"
-		sum += -arr[ik] + arr[i]
-		ium > maxSum {
+		// update the "sliding sum"
+		sum += -arr[i-k] + arr[i]
+		if sum > maxSum {
 			maxSum = sum
 		}
+	}
 	return maxSum
 }

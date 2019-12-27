@@ -21,5 +21,3 @@ func TestSlidingMaxSum(t *testing.T) {
 		t.Errorf("Expected 24, received %v", max)
 	}
 }
-
-
