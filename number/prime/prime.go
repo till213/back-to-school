@@ -38,12 +38,10 @@ func sieve(n int) {
 		}
 	}
 	fmt.Println("")
-
 }
 
 // Prime number sieve of Eratosthenes
 func bitsSieve(n int) {
-
 	sieve := bit.New().AddRange(2, n)
 	sqrtN := int(math.Sqrt(float64(n)))
 	for p := 2; p <= sqrtN; p = sieve.Next(p) {
