@@ -16,6 +16,7 @@ apps/array/distinctelem/distinctelem
 apps/array/maxsum/maxsum
 apps/dynamicprog/jumpball/jumpball
 apps/dynamicprog/lrucache/lrucache
+apps/histvolume/histvolume
 apps/permutation/bracket/bracket
 apps/permutation/rot13reader/rot13reader
 apps/permutation/strperm/strperm
@@ -27,6 +28,7 @@ number/fibonacci/fibonacci
 number/poorman/poorman
 number/prime/prime
 recursion/toh/toh
+sort/countsort/countsort
 sort/heapsort/heapsort
 sort/insertsort/insertsort
 sort/mergesort/mergesort
@@ -37,3 +39,9 @@ struct/heap/heap
 struct/list/traverse/traverse
 struct/prioqueue/prioqueue
 
+apps/array/unique/unique
+apps/array/checkperm/checkperm
+apps/array/urlify/urlify
+apps/array/palindromeperm/palindromeperm
+bits/bitmagic/bitmagic
+apps/array/oneaway/oneaway
