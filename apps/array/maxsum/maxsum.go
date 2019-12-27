@@ -1,3 +1,4 @@
+// Note: Messed up by editor! (Does not compile)
 package maxsum
 
 func sum(arr []int) int {
@@ -36,7 +37,9 @@ func NaiveMaxSum(arr []int, k int) int {
 func SlidingMaxSum(arr []int, k int) int {
 	var maxSum int
 	l := len(arr)
+
 	if l < k {
+
 		return maxSum
 	}
 
