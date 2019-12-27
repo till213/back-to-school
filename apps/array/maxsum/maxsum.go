@@ -46,11 +46,9 @@ func SlidingMaxSum(arr []int, k int) int {
 	maxSum = sum(arr[0:k])
 	sum := maxSum
 	for i := k; i < l; i++ {
-
 		// update the "sliding sum"
 		sum += -arr[i-k] + arr[i]
 		if sum > maxSum {
-
 			maxSum = sum
 		}
 	}
