@@ -49,3 +49,4 @@ struct/list/traverse/traverse
 struct/prioqueue/prioqueue
 
 apps/linkedlist/loopdetect/loopdetect
+apps/stackqueue/threeinone/threeinone
