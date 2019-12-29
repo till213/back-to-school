@@ -54,6 +54,8 @@ func TestPrioQueueReverse(t *testing.T) {
 	var pq PrioQueue
 	a := array.Sorted(heap.M, false)
 
+	pq.Init()
+
 	for _, elt := range a {
 		pq.Insert(elt)
 	}

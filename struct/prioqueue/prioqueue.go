@@ -11,6 +11,7 @@ type PrioQueue struct {
 
 // Init initialises a new priority queue
 func (p *PrioQueue) Init() {
+	p.heap.Init()
 	p.n = 0
 }
 

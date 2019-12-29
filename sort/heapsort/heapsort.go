@@ -28,7 +28,7 @@ func HeapSort(h *heap.Heap) {
 func main() {
 	var h heap.Heap
 
-	h.H = [heap.M + 1]int{0, 19, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	h.H = [heap.M + 1]int{99999, 5, 10, 13, 1, 8, 7, 19, 4, 3, 6, 2, 9}
 	fmt.Println("\n--- Unsorted --- \n", h.H)
 	HeapSort(&h)
 	fmt.Println("\n--- Sorted --- \n", h.H)
