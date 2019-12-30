@@ -51,3 +51,4 @@ struct/prioqueue/prioqueue
 apps/linkedlist/loopdetect/loopdetect
 apps/stackqueue/threeinone/threeinone
 apps/stackqueue/stackmin/stackmin
+apps/stackqueue/setofstacks/setofstacks
