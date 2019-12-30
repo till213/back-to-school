@@ -29,14 +29,24 @@ func (s *SetOfStacks) Push(value int) {
 	s.stacks[s.activeStack] = append(s.stacks[s.activeStack], value)
 }
 
-// Pop removes and return the topmost value of the stack
+// Pop removes and returns the topmost value of the stack
 func (s *SetOfStacks) Pop() int {
-	if len(s.stacks[s.activeStack]) == 0 {
+	for len(s.stacks[s.activeStack]) == 0 && s.activeStack > 0 {
 		s.activeStack--
 	}
 	stack := s.stacks[s.activeStack]
 	value := stack[len(stack)-1]
 	s.stacks[s.activeStack] = stack[:len(stack)-1]
+	return value
+}
+
+// PopAt removes and returns the topmost value of the stack
+// identified by activeStack
+func (s *SetOfStacks) PopAt(activeStack int) int {
+	oldActiveStack := s.activeStack
+	s.activeStack = activeStack
+	value := s.Pop()
+	s.activeStack = oldActiveStack
 	return value
 }
 
@@ -47,8 +57,7 @@ func main() {
 	s.Push(23)
 	s.Push(13)
 	fmt.Println("Pop", s.Pop())
+	fmt.Println("PopAt(0)", s.PopAt(0))
 	fmt.Println("Pop", s.Pop())
 	fmt.Println("Pop", s.Pop())
-	fmt.Println("Pop", s.Pop())
-
 }
