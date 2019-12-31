@@ -5,13 +5,13 @@ import (
 	"testing"
 
 	"github.com/till213/back-to-school/data/array"
-	"github.com/till213/back-to-school/struct/heap"
+	"github.com/till213/back-to-school/struct/tree/heap/binaryheap"
 )
 
 func TestHeapSortRandom(t *testing.T) {
-	var h heap.Heap
+	var h binaryheap.BinaryHeap
 
-	h.H = [heap.M + 1]int{99999, 5, 10, 13, 1, 8, 7, 19, 4, 3, 6, 2, 9}
+	h.H = [binaryheap.M + 1]int{99999, 5, 10, 13, 1, 8, 7, 19, 4, 3, 6, 2, 9}
 
 	fmt.Println("Unsorted", h.H)
 	HeapSort(&h)

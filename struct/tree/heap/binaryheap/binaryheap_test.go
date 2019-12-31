@@ -1,4 +1,4 @@
-package heap
+package binaryheap
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 func TestHeap(t *testing.T) {
-	var heap Heap
+	var heap BinaryHeap
 
 	heap.H = [M + 1]int{0, 19, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
 

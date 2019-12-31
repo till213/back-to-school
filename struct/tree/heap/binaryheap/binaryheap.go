@@ -1,11 +1,11 @@
-// Package heap provides a fixed-length heap.
-package heap
+// Package heap provides a fixed-length binary heap.
+package binaryheap
 
 // M is the lenght of heap
 const M = 32
 
 // Heap structure
-type Heap struct {
+type BinaryHeap struct {
 	// Fist element shall have index 1 (not 0)
 	H [M + 1]int // Fixed-length heap
 }
@@ -13,7 +13,7 @@ type Heap struct {
 // Restore restores the heap properties from L to R, were
 // L <= R and L, R in [1, M]
 // H[i] <= H[2 * i] AND H[i] <= H[2 * i + 1]
-func (heap *Heap) Restore(L, R int) {
+func (heap *BinaryHeap) Restore(L, R int) {
 	var i, j int
 
 	i = L
@@ -33,7 +33,7 @@ func (heap *Heap) Restore(L, R int) {
 }
 
 // Create will create the heap properties for the entire array Heap.H
-func (heap *Heap) Create() {
+func (heap *BinaryHeap) Create() {
 	for i := M / 2; i > 0; i-- {
 		heap.Restore(i, M)
 	}
