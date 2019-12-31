@@ -11,7 +11,6 @@ func visitNode(n *Node) {
 }
 
 func TestTripleTreeTraverse(t *testing.T) {
-
 	root := New(2)
 	Add(&root, 1)
 	Add(&root, 3)
