@@ -143,3 +143,33 @@ func TestBinarySearchTreeDFS(t *testing.T) {
 	fmt.Println("---- DFS ----")
 	tree.DFS(func(n *Node) { fmt.Println("Node value", n.Value()) })
 }
+
+func TestBinarySearchTreeCopy(t *testing.T) {
+	var tree *BinarySearchTree
+
+	// Setup
+	tree = New()
+	tree.Add(5)
+	tree.Add(2)
+	tree.Add(4)
+	tree.Add(3)
+	tree.Add(1)
+	tree.Add(8)
+	tree.Add(9)
+
+	fmt.Println("---- Original (DFS) ----")
+	tree.DFS(func(n *Node) { fmt.Println("Node value", n.Value()) })
+
+	// Exercise
+	copy := tree.Copy()
+
+	fmt.Println("---- Copy (DFS) ----")
+	copy.DFS(func(n *Node) { fmt.Println("Node value", n.Value()) })
+
+	if tree.NofNodes() != copy.NofNodes() {
+		t.Errorf("Number of nodes, expected: %v received: %v", tree.NofNodes(), copy.NofNodes())
+	}
+	if tree.MaximumDepth() != copy.MaximumDepth() {
+		t.Errorf("Maximum depth, expected: %v received: %v", tree.MaximumDepth(), copy.MaximumDepth())
+	}
+}

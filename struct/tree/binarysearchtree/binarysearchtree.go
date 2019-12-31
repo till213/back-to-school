@@ -55,6 +55,20 @@ func (n *Node) find(value int) *Node {
 	return n.right.find(value)
 }
 
+// Copy recursively copies this node n and all its children,
+// returning the copy of n.
+func (n *Node) copy() *Node {
+	c := new(Node)
+	c.value = n.value
+	if n.left != nil {
+		c.left = n.left.copy()
+	}
+	if n.right != nil {
+		c.right = n.right.copy()
+	}
+	return c
+}
+
 func (n *Node) nofChildren() int {
 	var count int
 	if n == nil {
@@ -194,6 +208,17 @@ func (b *BinarySearchTree) Remove(value int) {
 	b.root.remove(&b.root, value)
 }
 
+// Copy creates and returns a deep copy of this binary
+// search tree.
+func (b *BinarySearchTree) Copy() *BinarySearchTree {
+	if b.root != nil {
+		c := New()
+		c.root = b.root.copy()
+		return c
+	}
+	return nil
+}
+
 // MaximumDepth returns the maximum depth of the binary search tree,
 // where root (1 element) has depth 0
 func (b *BinarySearchTree) MaximumDepth() int {
@@ -206,7 +231,7 @@ func (b *BinarySearchTree) NofNodes() int {
 }
 
 // BFS iterates over the tree in a Breadth-First Search manner,
-// calling f() for each node
+// calling f(n) for each node
 func (b *BinarySearchTree) BFS(f func(*Node)) {
 	if b.root != nil {
 		queue := []*Node{}
