@@ -56,3 +56,4 @@ apps/stackqueue/stackqueue/stackqueue
 apps/stackqueue/sortstack/sortstack
 apps/stackqueue/animalshelter/animalshelter
 apps/backtracking/eightqueen/eightqueen
+apps/backtracking/knightstour/knightstour
