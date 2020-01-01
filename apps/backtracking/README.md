@@ -1,6 +1,6 @@
 # Backtracking
 
-## General Pattern
+## General Pattern (Single Solution)
 
 ```pascal
 PROCEDURE Try;
@@ -34,4 +34,22 @@ BEGIN
         END 
     END
 UNTIL successful OR (k = m) END Try
+```
+
+## General Pattern (All Solutions)
+
+```pascal
+PROCEDURE Try(i: INTEGER); VAR k: INTEGER;        
+BEGIN
+    FOR k := 0 TO n-1 DO
+        select k th candidate;
+        IF acceptable THEN record it;
+        IF i < n THEN 
+            Try(i+1)
+        ELSE 
+            output solution
+        END;
+        cancel recording END
+    END 
+END Try
 ```
