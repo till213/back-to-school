@@ -4,8 +4,8 @@ import (
 	"github.com/golang-collections/collections/stack"
 )
 
+// Recursive depth-first serach
 func dfs(v *Vertex, sorted *stack.Stack) {
-
 	v.Visited = true
 	for _, e := range v.Adjacency {
 		// Recursively visit all adjacent vertices first ("depth first")

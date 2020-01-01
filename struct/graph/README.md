@@ -2,4 +2,5 @@
 
 ## Useful Resources
 
-[Topological Sort (YouTube)](https://www.youtube.com/watch?v=eL-KzMXSXXI)
+* [Topological Sort (YouTube)](https://www.youtube.com/watch?v=eL-KzMXSXXI)
+* [DFS, BFS (YouTube)](https://www.youtube.com/watch?v=LcqS6kaS5t0)
