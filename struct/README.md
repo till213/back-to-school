@@ -23,3 +23,8 @@
 | merge       |    O(n)     | O(log n)          | O(1)        |           O(1) |
 
 &#x00B9; O(1) amortised; worst cost is O(log n)
+
+## Useful Resources
+
+* [Dictionary of Algorithms and Data Structures (NIST)](https://xlinux.nist.gov/dads/)
+

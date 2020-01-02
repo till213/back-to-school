@@ -10,8 +10,8 @@ const (
 )
 
 type node struct {
-	value       int
-	left, right *node
+	value                int
+	left, right, sibling *node
 }
 
 // Creates a balanced (unordered) tree in a recursive manner, returning
@@ -106,6 +106,57 @@ func (n *node) morrisTreeTraversal(f func(n *node), order mode) {
 	}
 }
 
+// Returns the right-most next sibling for node n, using
+// it's parent for traversal. Returns the new sibling
+// and the parent of that sibling, if exists; otherwise
+// nil, nil is returned
+func (n *node) nextSibling(parent *node) (sibling, siblingParent *node) {
+	if parent == nil {
+		return nil, nil
+	}
+	if parent.right != nil && n != parent.right {
+		// right subtree of current parent not yet visited
+		sibling = parent.right
+		siblingParent = parent
+	} else {
+		ps := parent.sibling
+		for sibling == nil && ps != nil {
+			// does parent sibling have any children?
+			if ps.left != nil {
+				sibling = ps.left
+				siblingParent = ps
+			} else if ps.right != nil {
+				sibling = ps.right
+				siblingParent = ps
+			} else {
+				// parent sibling has no children,
+				// proceed to next parent sibling
+				ps = ps.sibling
+			}
+		}
+	}
+	return
+}
+
+// Initialises the sibling pointers for all nodes
+func (n *node) initSiblings() {
+	var p, q, ps, qs, s *node
+	p = nil
+	q = n
+	// iterate down the left subtree
+	for q != nil {
+		qs = q
+		ps = p
+		// for each level initialise the siblings
+		for qs != nil {
+			s, ps = qs.nextSibling(ps)
+			qs.sibling = s
+			qs = qs.sibling
+		}
+		p, q = q, q.left
+	}
+}
+
 // Prints the binary tree given with root node.
 // Root is on the left, right nodes in the upper half,
 // tree is printed left (root) to right (leaves)
@@ -116,7 +167,12 @@ func printTree(node *node, h int) {
 		for i := 0; i < h; i++ {
 			fmt.Print("\t")
 		}
-		fmt.Printf("%6d\n", node.value)
+		fmt.Printf("%4d", node.value)
+		if node.sibling != nil {
+			fmt.Printf("[%d]\n", node.sibling.value)
+		} else {
+			fmt.Print("[]\n")
+		}
 		printTree(node.left, h+1)
 	}
 }
@@ -139,4 +195,7 @@ func main() {
 	fmt.Println("--- Pre-Order Traversal ---")
 	root.morrisTreeTraversal(visit, preorder)
 	fmt.Println()
+	fmt.Println("--- Siblings ---")
+	root.initSiblings()
+	printTree(root, 0)
 }

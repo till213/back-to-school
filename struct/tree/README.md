@@ -1,4 +1,4 @@
-# Graphs
+# Trees
 
 ## Useful Resources
 
