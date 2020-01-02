@@ -9,6 +9,7 @@ var NamedVertices = []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "
 func DAG() *Graph {
 	g := New()
 
+	rand.Seed(1)
 	g.AddVertices(NamedVertices)
 	g.AddEdge("A", "D", rand.Intn(20))
 	g.AddEdge("B", "D", rand.Intn(20))
