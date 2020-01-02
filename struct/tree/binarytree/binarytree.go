@@ -2,6 +2,13 @@ package main
 
 import "fmt"
 
+type mode int
+
+const (
+	preorder mode = iota
+	inorder
+)
+
 type node struct {
 	value       int
 	left, right *node
@@ -60,6 +67,45 @@ func (n *node) copyTree() *node {
 	return p
 }
 
+// The morrisTreeTraversal traverses the tree with root n
+// according to order: either preorder or inorder.
+// In O(n) and with O(1) aux space.
+func (n *node) morrisTreeTraversal(f func(n *node), order mode) {
+	current := n
+	for current != nil {
+		if current.left == nil {
+			f(current)
+			current = current.right
+		} else {
+			// has left child
+			predecessor := current.left
+			for predecessor.right != current && predecessor.right != nil {
+				predecessor = predecessor.right
+			}
+			if predecessor.right == nil {
+				// we have not yet visited that left branch
+				// so temporarily set a "backtracking path" to current...
+				predecessor.right = current
+				if order == preorder {
+					f(current)
+				}
+				// ... and visit left branch
+				current = current.left
+			} else {
+				// the "backtracking path" points to current,
+				// which indicates that we have already visited that
+				// left branch -> restore pointers...
+				predecessor.right = nil
+				if order == inorder {
+					f(current)
+				}
+				// ... and proceed with right branch
+				current = current.right
+			}
+		}
+	}
+}
+
 // Prints the binary tree given with root node.
 // Root is on the left, right nodes in the upper half,
 // tree is printed left (root) to right (leaves)
@@ -75,6 +121,10 @@ func printTree(node *node, h int) {
 	}
 }
 
+func visit(n *node) {
+	fmt.Printf("%v, ", n.value)
+}
+
 func main() {
 	values := []int{8, 9, 11, 15, 19, 20, 21, 7, 3, 2, 1, 5, 6, 4, 13, 14, 10, 12, 17, 16, 18}
 	root := createTree(values)
@@ -83,4 +133,10 @@ func main() {
 	cp := root.copyTree()
 	fmt.Println("--- Copy ---")
 	printTree(cp, 0)
+	fmt.Println("--- In-Order Traversal ---")
+	root.morrisTreeTraversal(visit, inorder)
+	fmt.Println()
+	fmt.Println("--- Pre-Order Traversal ---")
+	root.morrisTreeTraversal(visit, preorder)
+	fmt.Println()
 }
