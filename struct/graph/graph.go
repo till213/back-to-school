@@ -7,10 +7,23 @@ import "fmt"
 // UnweightedCost represents the cost of an unweighted edge
 const UnweightedCost = 0
 
+// Color defines the state ("colour") of a given vertex, e.g. black, grey, white
+// or simply visited, unvisited, depending on the use case.
+type Color int
+
+// The vertex colours.
+const (
+	Black Color = iota
+	Gray
+	White
+	Visited
+	Unvisited
+)
+
 // Vertex represents a vertex in a graph
 type Vertex struct {
 	name        string
-	visited     bool
+	color       Color
 	adjacency   []*Edge
 	distance    int
 	predecessor *Vertex
@@ -41,11 +54,12 @@ func New() *Graph {
 }
 
 // AddVertex creates and adds a named vertex, and
-// returns it.
+// returns it. Color is set to unvisited.
 func (g *Graph) AddVertex(name string) *Vertex {
 	v := new(Vertex)
 	v.name = name
 	v.adjacency = make([]*Edge, 0, 8)
+	v.color = Unvisited
 	g.Vertices[name] = v
 	return v
 }
@@ -111,7 +125,7 @@ func (g *Graph) AddUnweightedEdge(fromName, toName string) {
 // ToString adds a textual represenation of this vertex to sb.
 func (v *Vertex) ToString(sb *strings.Builder) {
 	fmt.Fprintf(sb, "-- Vertex %s --\n", v.name)
-	fmt.Fprintf(sb, "\tvisited %v\n", v.visited)
+	fmt.Fprintf(sb, "\tcolor %v\n", v.color)
 	fmt.Fprintf(sb, "\tdistance %v\n", v.distance)
 	fmt.Fprintf(sb, "\tpredecessors:\n\t")
 	for p := v.predecessor; p != nil; p = p.predecessor {

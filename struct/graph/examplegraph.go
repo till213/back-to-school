@@ -24,3 +24,15 @@ func DAG() *Graph {
 	g.AddEdges("J", []string{"L", "M"}, []int{rand.Intn(20), rand.Intn(20)})
 	return g
 }
+
+// WithCycle returns a graph with a simple cycle
+func WithCycle() *Graph {
+	g := New()
+
+	rand.Seed(1)
+	g.AddVertices([]string{"A", "B", "C"})
+	g.AddEdge("A", "B", rand.Intn(20))
+	g.AddEdge("B", "C", rand.Intn(20))
+	g.AddEdge("C", "A", rand.Intn(20))
+	return g
+}
