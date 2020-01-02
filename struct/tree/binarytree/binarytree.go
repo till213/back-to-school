@@ -24,6 +24,42 @@ func createTree(values []int) *node {
 	return node
 }
 
+func (n *node) copyTree() *node {
+	var cp, q, p *node
+
+	p = nil
+	q = n
+	for q != nil {
+		cp = new(node)
+		cp.value = q.value
+		// Right points to copied parent
+		cp.right = p
+		// Left points to original right node (if it has one),
+		// still to be copied
+		if q.right != nil {
+			cp.left = q.right
+		}
+		// Advance left
+		p, q = cp, q.left
+	}
+	// post:
+	// * we have reached the bottom left node of the subtree: p
+	// * all right pointers point to parent node
+	// * all left pointers point to right node of original subtree (if exists)
+	q, p = p, nil
+	for q != nil {
+		// Set left pointer to child
+		l := q.left
+		q.left = p
+
+		// Step up
+		q, p = q.right, q
+		p.right = l.copyTree()
+	}
+
+	return p
+}
+
 // Prints the binary tree given with root node.
 // Root is on the left, right nodes in the upper half,
 // tree is printed left (root) to right (leaves)
@@ -42,5 +78,9 @@ func printTree(node *node, h int) {
 func main() {
 	values := []int{8, 9, 11, 15, 19, 20, 21, 7, 3, 2, 1, 5, 6, 4, 13, 14, 10, 12, 17, 16, 18}
 	root := createTree(values)
+	fmt.Println("--- Original ---")
 	printTree(root, 0)
+	cp := root.copyTree()
+	fmt.Println("--- Copy ---")
+	printTree(cp, 0)
 }
