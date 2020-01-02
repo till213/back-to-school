@@ -9,9 +9,14 @@ const UnweightedCost = 0
 
 // Vertex represents a vertex in a graph
 type Vertex struct {
-	Name      string
-	Visited   bool
-	Adjacency []*Edge
+	Name        string
+	Visited     bool
+	Adjacency   []*Edge
+	Distance    int
+	Predecessor *Vertex
+	// Index for heap structure: the index is needed by update
+	// and is maintained by the heap.Interface methods.
+	index int
 }
 
 // Edge represents a directed connection between a
@@ -103,15 +108,26 @@ func (g *Graph) AddUnweightedEdge(fromName, toName string) {
 	g.AddEdge(fromName, toName, UnweightedCost)
 }
 
+// ToString adds a textual represenation of this vertex to sb.
+func (v *Vertex) ToString(sb *strings.Builder) {
+	fmt.Fprintf(sb, "-- Vertex %s --\n", v.Name)
+	fmt.Fprintf(sb, "\tvisited %v\n", v.Visited)
+	fmt.Fprintf(sb, "\tdistance %v\n", v.Distance)
+	fmt.Fprintf(sb, "\tpredecessors:\n\t")
+	for p := v.Predecessor; p != nil; p = p.Predecessor {
+		fmt.Fprintf(sb, "-> %s (%d) ", p.Name, p.Distance)
+	}
+	fmt.Fprintf(sb, "\nAdjacency\n")
+	for _, v := range v.Adjacency {
+		fmt.Fprintf(sb, "\t-> %s cost: %d\n", v.To.Name, v.Cost)
+	}
+}
+
 // ToString returns a textual represenation of this graph.
 func (g *Graph) ToString() string {
 	var sb strings.Builder
-
-	for k, v := range g.Vertices {
-		fmt.Fprintf(&sb, "Vertex %s, visited %v\n", k, v.Visited)
-		for _, v := range v.Adjacency {
-			fmt.Fprintf(&sb, "\t-> %s cost: %d\n", v.To.Name, v.Cost)
-		}
+	for _, v := range g.Vertices {
+		v.ToString(&sb)
 	}
 	return sb.String()
 }
