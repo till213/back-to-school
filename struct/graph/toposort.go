@@ -6,10 +6,10 @@ import (
 
 // Recursive depth-first serach
 func dfs(v *Vertex, sorted *stack.Stack) {
-	v.Visited = true
-	for _, e := range v.Adjacency {
+	v.visited = true
+	for _, e := range v.adjacency {
 		// Recursively visit all adjacent vertices first ("depth first")
-		if !e.To.Visited {
+		if !e.To.visited {
 			dfs(e.To, sorted)
 		}
 	}
@@ -22,7 +22,7 @@ func dfs(v *Vertex, sorted *stack.Stack) {
 func TopoSort(g *Graph) []*Vertex {
 	sorted := stack.New()
 	for _, v := range g.Vertices {
-		if !v.Visited {
+		if !v.visited {
 			dfs(v, sorted)
 		}
 	}

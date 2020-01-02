@@ -9,11 +9,11 @@ const UnweightedCost = 0
 
 // Vertex represents a vertex in a graph
 type Vertex struct {
-	Name        string
-	Visited     bool
-	Adjacency   []*Edge
-	Distance    int
-	Predecessor *Vertex
+	name        string
+	visited     bool
+	adjacency   []*Edge
+	distance    int
+	predecessor *Vertex
 	// Index for heap structure: the index is needed by update
 	// and is maintained by the heap.Interface methods.
 	index int
@@ -44,8 +44,8 @@ func New() *Graph {
 // returns it.
 func (g *Graph) AddVertex(name string) *Vertex {
 	v := new(Vertex)
-	v.Name = name
-	v.Adjacency = make([]*Edge, 0, 8)
+	v.name = name
+	v.adjacency = make([]*Edge, 0, 8)
 	g.Vertices[name] = v
 	return v
 }
@@ -69,7 +69,7 @@ func (v *Vertex) AddEdge(to *Vertex, cost int) {
 	e := new(Edge)
 	e.Cost = cost
 	e.To = to
-	v.Adjacency = append(v.Adjacency, e)
+	v.adjacency = append(v.adjacency, e)
 }
 
 // AddUnweightedEdge adds an unweighted edge (with cost=0) to this vertex,
@@ -110,16 +110,16 @@ func (g *Graph) AddUnweightedEdge(fromName, toName string) {
 
 // ToString adds a textual represenation of this vertex to sb.
 func (v *Vertex) ToString(sb *strings.Builder) {
-	fmt.Fprintf(sb, "-- Vertex %s --\n", v.Name)
-	fmt.Fprintf(sb, "\tvisited %v\n", v.Visited)
-	fmt.Fprintf(sb, "\tdistance %v\n", v.Distance)
+	fmt.Fprintf(sb, "-- Vertex %s --\n", v.name)
+	fmt.Fprintf(sb, "\tvisited %v\n", v.visited)
+	fmt.Fprintf(sb, "\tdistance %v\n", v.distance)
 	fmt.Fprintf(sb, "\tpredecessors:\n\t")
-	for p := v.Predecessor; p != nil; p = p.Predecessor {
-		fmt.Fprintf(sb, "-> %s (%d) ", p.Name, p.Distance)
+	for p := v.predecessor; p != nil; p = p.predecessor {
+		fmt.Fprintf(sb, "-> %s (%d) ", p.name, p.distance)
 	}
-	fmt.Fprintf(sb, "\nAdjacency\n")
-	for _, v := range v.Adjacency {
-		fmt.Fprintf(sb, "\t-> %s cost: %d\n", v.To.Name, v.Cost)
+	fmt.Fprintf(sb, "\nadjacency\n")
+	for _, v := range v.adjacency {
+		fmt.Fprintf(sb, "\t-> %s cost: %d\n", v.To.name, v.Cost)
 	}
 }
 

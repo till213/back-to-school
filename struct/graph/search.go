@@ -11,17 +11,17 @@ import (
 // O(E + V)
 func DFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.Visited = false
+		v.visited = false
 	}
 	stack := stack.New()
 	stack.Push(v)
-	v.Visited = true
+	v.visited = true
 	for stack.Len() > 0 {
 		current := stack.Pop().(*Vertex)
-		for _, edge := range current.Adjacency {
-			if !edge.To.Visited {
+		for _, edge := range current.adjacency {
+			if !edge.To.visited {
 				stack.Push(edge.To)
-				edge.To.Visited = true
+				edge.To.visited = true
 			}
 		}
 		f(current)
@@ -30,10 +30,10 @@ func DFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 
 func recursiveDFS(v *Vertex, f func(v *Vertex)) {
 	f(v)
-	for _, edge := range v.Adjacency {
-		if !edge.To.Visited {
+	for _, edge := range v.adjacency {
+		if !edge.To.visited {
 			recursiveDFS(edge.To, f)
-			edge.To.Visited = true
+			edge.To.visited = true
 		}
 	}
 }
@@ -44,7 +44,7 @@ func recursiveDFS(v *Vertex, f func(v *Vertex)) {
 // O(E + V)
 func RecursiveDFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.Visited = false
+		v.visited = false
 	}
 	recursiveDFS(v, f)
 }
@@ -55,18 +55,18 @@ func RecursiveDFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 // O(E + V)
 func BFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.Visited = false
+		v.visited = false
 	}
 	list := list.New()
 	list.PushFront(v)
-	v.Visited = true
+	v.visited = true
 	for list.Len() > 0 {
 		current := list.Back().Value.(*Vertex)
 		list.Remove(list.Back())
-		for _, edge := range current.Adjacency {
-			if !edge.To.Visited {
+		for _, edge := range current.adjacency {
+			if !edge.To.visited {
 				list.PushFront(edge.To)
-				edge.To.Visited = true
+				edge.To.visited = true
 			}
 		}
 		f(current)

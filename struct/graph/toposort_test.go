@@ -17,7 +17,7 @@ func TestToposortDAG(t *testing.T) {
 
 	fmt.Println("---- Topological Sort ----")
 	for _, v := range vertices {
-		fmt.Print("->", v.Name)
+		fmt.Print("->", v.name)
 	}
 	fmt.Println()
 }

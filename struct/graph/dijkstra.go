@@ -4,14 +4,14 @@ import (
 	"container/heap"
 )
 
-const maxDistance = 1<<31 - 1
+const maxdistance = 1<<31 - 1
 const notInHeap = -1
 
 // PathVertices represent (shortest) paths in the graph
 type PathVertices []*Vertex
 
 // initSingleSource returns all the vertices as a vertex slice.
-// The vertex distances are all initialised to maxDistance, except
+// The vertex distances are all initialised to maxdistance, except
 // for the start vertex, for which it is set to 0.
 // The index - which is used to keep track of the position in the
 // heap respectively the returned vertex slice - is updated
@@ -22,11 +22,11 @@ func (g *Graph) initSingleSource(start *Vertex, updateIndex bool) PathVertices {
 	i := 0
 	for _, v := range g.Vertices {
 		if v != start {
-			v.Distance = maxDistance
+			v.distance = maxdistance
 		} else {
-			v.Distance = 0
+			v.distance = 0
 		}
-		v.Predecessor = nil
+		v.predecessor = nil
 		if updateIndex {
 			v.index = i
 		} else {
@@ -49,7 +49,7 @@ func (v PathVertices) Len() int {
 // than element with index j, by comparing the
 // vertex distances.
 func (v PathVertices) Less(i, j int) bool {
-	return v[i].Distance < v[j].Distance
+	return v[i].distance < v[j].distance
 }
 
 // Swap swaps element i and j.
@@ -80,10 +80,10 @@ func (v *PathVertices) Pop() interface{} {
 	return item
 }
 
-// updateDistance (aka "decrease key") updates the distance for the given
+// updatedistance (aka "decrease key") updates the distance for the given
 // vertex, and re-establishes the underlying heap structure (in O(log n)).
-func (v *PathVertices) updateDistance(vertex *Vertex, distance int) {
-	vertex.Distance = distance
+func (v *PathVertices) updatedistance(vertex *Vertex, distance int) {
+	vertex.distance = distance
 	heap.Fix(v, vertex.index)
 }
 
@@ -112,12 +112,12 @@ func (g *Graph) ClassicDijkstra(start *Vertex) {
 	for vertices.Len() > 0 {
 		vertex := heap.Pop(&vertices).(*Vertex)
 		// For all edges (of current vertex), O(E)
-		for _, e := range vertex.Adjacency {
-			distance := vertex.Distance + e.Cost
-			if distance < e.To.Distance {
+		for _, e := range vertex.adjacency {
+			distance := vertex.distance + e.Cost
+			if distance < e.To.distance {
 				// Relax vertex ("decrease key")
-				vertices.updateDistance(e.To, distance)
-				e.To.Predecessor = vertex
+				vertices.updatedistance(e.To, distance)
+				e.To.predecessor = vertex
 			}
 		}
 	}
@@ -147,18 +147,18 @@ func (g *Graph) FrontierDijkstra(start *Vertex) {
 	for frontier.Len() > 0 {
 		vertex := heap.Pop(&frontier).(*Vertex)
 		// For all edges (of current vertex), O(E)
-		for _, e := range vertex.Adjacency {
-			distance := vertex.Distance + e.Cost
-			if distance < e.To.Distance {
-				e.To.Predecessor = vertex
+		for _, e := range vertex.adjacency {
+			distance := vertex.distance + e.Cost
+			if distance < e.To.distance {
+				e.To.predecessor = vertex
 				if e.To.index != notInHeap {
 					// We have already visited this vertex,
 					// so simply relax this vertex ("decrease key")
-					vertices.updateDistance(e.To, distance)
+					vertices.updatedistance(e.To, distance)
 				} else {
 					// New vertex discovered in "uncharted territory",
 					// so add it to our "frontier"
-					e.To.Distance = distance
+					e.To.distance = distance
 					frontier.Push(e.To)
 				}
 			}
