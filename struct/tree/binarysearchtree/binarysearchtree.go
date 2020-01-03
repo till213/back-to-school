@@ -234,8 +234,7 @@ func (b *BinarySearchTree) NofNodes() int {
 // calling f(n) for each node
 func (b *BinarySearchTree) BFS(f func(*Node)) {
 	if b.root != nil {
-		queue := []*Node{}
-		queue = append(queue, b.root)
+		queue := []*Node{b.root}
 		bfs(queue, f)
 	}
 }
