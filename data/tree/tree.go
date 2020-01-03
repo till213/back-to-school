@@ -20,8 +20,8 @@ func CreateBinarySearchTree(sortedValues []int) *Node {
 	case 2:
 		n = new(Node)
 		n.Value = sortedValues[0]
-		n = new(Node)
-		n.Value = sortedValues[1]
+		n.Right = new(Node)
+		n.Right.Value = sortedValues[1]
 	default:
 		n = new(Node)
 		n.Value = sortedValues[len / 2]
