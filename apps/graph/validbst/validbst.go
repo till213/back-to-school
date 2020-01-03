@@ -21,12 +21,12 @@ func isValidBST(n *tree.Node) bool {
 
 func main() {
 	sorted := []int{1, 2, 3, 4}
-	root := tree.CreateBinarySearchTree(sorted)
+	root := tree.CreateBinarySearchTree(sorted, nil)
 	valid := isValidBST(root)
 	fmt.Println("Tree (sorted) is a valid Binary Search Tree:", valid)
 
 	unsorted := []int{3, 2, 1}
-	root = tree.CreateBinarySearchTree(unsorted)
+	root = tree.CreateBinarySearchTree(unsorted, nil)
 	valid = isValidBST(root)
 	fmt.Println("Tree (unsorted) is a valid Binary Search Tree:", valid)
 }

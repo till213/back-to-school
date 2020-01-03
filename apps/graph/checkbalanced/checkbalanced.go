@@ -22,12 +22,12 @@ func isBalanced(n *tree.Node) bool {
 
 func main() {
 	sorted := []int{1, 2, 3, 4}
-	root := tree.CreateBinarySearchTree(sorted)
+	root := tree.CreateBinarySearchTree(sorted, nil)
 	balanced := isBalanced(root)
 	fmt.Println("Tree with 4 nodes is balanced:", balanced)
 
 	sorted = []int{1, 2, 3}
-	root = tree.CreateBinarySearchTree(sorted)
+	root = tree.CreateBinarySearchTree(sorted, nil)
 	balanced = isBalanced(root)
 	fmt.Println("Tree with 3 nodes is balanced:", balanced)
 }
