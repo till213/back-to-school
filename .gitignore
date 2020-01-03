@@ -47,7 +47,6 @@ sort/selectsort/selectsort
 struct/heap/heap
 struct/list/traverse/traverse
 struct/prioqueue/prioqueue
-
 apps/linkedlist/loopdetect/loopdetect
 apps/stackqueue/threeinone/threeinone
 apps/stackqueue/stackmin/stackmin
@@ -58,3 +57,10 @@ apps/stackqueue/animalshelter/animalshelter
 apps/backtracking/eightqueen/eightqueen
 apps/backtracking/knightstour/knightstour
 struct/tree/binarytree/binarytree
+apps/graph/checkbalanced/checkbalanced
+apps/graph/commonvertex/commonvertex
+apps/graph/listofdepth/listofdepth
+apps/graph/minsearchtree/minsearchtree
+apps/graph/noderoute/noderoute
+apps/graph/successor/successor
+apps/graph/validbst/validbst
