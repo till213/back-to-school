@@ -7,14 +7,14 @@ import (
 
 func recursiveDFS(v *Vertex, f func(v *Vertex)) {
 	f(v)
-	v.color = Gray
-	for _, edge := range v.adjacency {
-		if edge.To.color == White {
+	v.Color = Gray
+	for _, edge := range v.Adjacency {
+		if edge.To.Color == White {
 			recursiveDFS(edge.To, f)
-			edge.To.color = Visited
+			edge.To.Color = Visited
 		}
 	}
-	v.color = Black
+	v.Color = Black
 }
 
 // RecursiveDFS implements a recursive depth-first search on graph g,
@@ -22,7 +22,7 @@ func recursiveDFS(v *Vertex, f func(v *Vertex)) {
 // O(E + V)
 func RecursiveDFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.color = White
+		v.Color = White
 	}
 	recursiveDFS(v, f)
 }
@@ -32,17 +32,17 @@ func RecursiveDFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 // O(E + V)
 func DFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.color = Unvisited
+		v.Color = Unvisited
 	}
 	stack := stack.New()
 	stack.Push(v)
-	v.color = Visited
+	v.Color = Visited
 	for stack.Len() > 0 {
 		current := stack.Pop().(*Vertex)
-		for _, edge := range current.adjacency {
-			if edge.To.color == Unvisited {
+		for _, edge := range current.Adjacency {
+			if edge.To.Color == Unvisited {
 				stack.Push(edge.To)
-				edge.To.color = Visited
+				edge.To.Color = Visited
 			}
 		}
 		f(current)
@@ -54,18 +54,18 @@ func DFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 // O(E + V)
 func BFS(g *Graph, v *Vertex, f func(v *Vertex)) {
 	for _, v := range g.Vertices {
-		v.color = Unvisited
+		v.Color = Unvisited
 	}
 	list := list.New()
 	list.PushFront(v)
-	v.color = Visited
+	v.Color = Visited
 	for list.Len() > 0 {
 		current := list.Back().Value.(*Vertex)
 		list.Remove(list.Back())
-		for _, edge := range current.adjacency {
-			if edge.To.color == Unvisited {
+		for _, edge := range current.Adjacency {
+			if edge.To.Color == Unvisited {
 				list.PushFront(edge.To)
-				edge.To.color = Visited
+				edge.To.Color = Visited
 			}
 		}
 		f(current)

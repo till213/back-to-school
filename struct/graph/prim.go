@@ -16,7 +16,7 @@ func (g *Graph) Prim(root *Vertex) {
 	for vertices.Len() > 0 {
 		vertex := heap.Pop(&vertices).(*Vertex)
 		// For all edges (of current vertex), O(E)
-		for _, e := range vertex.adjacency {
+		for _, e := range vertex.Adjacency {
 			if e.To.index != notInHeap && e.Cost < e.To.distance {
 				e.To.predecessor = vertex
 				vertices.updatedistance(e.To, e.Cost)

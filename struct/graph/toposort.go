@@ -10,19 +10,19 @@ import (
 // false is returned and sorted contains the detected
 // circle.
 func dfs(v *Vertex, sorted *stack.Stack) (acyclic bool) {
-	if v.color == Black {
+	if v.Color == Black {
 		// Already completely dealt with
 		return true
-	} else if v.color == Gray {
+	} else if v.Color == Gray {
 		// Graph is not a DAG -> cycle detected
 		// Push the vertex which closes the circle
 		sorted.Push(v)
 		return false
 	}
 
-	v.color = Gray
+	v.Color = Gray
 	acyclic = true
-	for _, e := range v.adjacency {
+	for _, e := range v.Adjacency {
 		// Recursively visit all adjacent vertices first ("depth first")
 		acyclic = dfs(e.To, sorted)
 		if !acyclic {
@@ -30,7 +30,7 @@ func dfs(v *Vertex, sorted *stack.Stack) (acyclic bool) {
 		}
 
 	}
-	v.color = Black
+	v.Color = Black
 	sorted.Push(v)
 	return acyclic
 }
@@ -44,10 +44,10 @@ func TopoSort(g *Graph) (vertices []*Vertex, acyclic bool) {
 	sorted := stack.New()
 
 	for _, v := range g.Vertices {
-		v.color = White
+		v.Color = White
 	}
 	for _, v := range g.Vertices {
-		if v.color != Black {
+		if v.Color != Black {
 			acyclic = dfs(v, sorted)
 			if !acyclic {
 				break

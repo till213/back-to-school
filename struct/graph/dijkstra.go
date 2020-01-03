@@ -112,7 +112,7 @@ func (g *Graph) ClassicDijkstra(start *Vertex) {
 	for vertices.Len() > 0 {
 		vertex := heap.Pop(&vertices).(*Vertex)
 		// For all edges (of current vertex), O(E)
-		for _, e := range vertex.adjacency {
+		for _, e := range vertex.Adjacency {
 			distance := vertex.distance + e.Cost
 			if distance < e.To.distance {
 				// Relax vertex ("decrease key")
@@ -147,7 +147,7 @@ func (g *Graph) FrontierDijkstra(start *Vertex) {
 	for frontier.Len() > 0 {
 		vertex := heap.Pop(&frontier).(*Vertex)
 		// For all edges (of current vertex), O(E)
-		for _, e := range vertex.adjacency {
+		for _, e := range vertex.Adjacency {
 			distance := vertex.distance + e.Cost
 			if distance < e.To.distance {
 				e.To.predecessor = vertex
