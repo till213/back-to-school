@@ -12,3 +12,4 @@ Implementation of various algorithms and data structures, with the aim to learn 
 ## Useful Resources
 
 * [Big Oh Cheat Sheet](https://www.bigocheatsheet.com/)
+* [Solutions to Introduction to Algorithms (Third Edition)](https://walkccc.github.io/CLRS/)
