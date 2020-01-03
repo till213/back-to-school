@@ -26,6 +26,8 @@ func createTree(values []int) *node {
 	node.value = values[0]
 	if n > 1 {
 		node.left = createTree(values[1 : nleft+1])
+	}
+	if n > 2 {
 		node.right = createTree(values[nleft+1:])
 	}
 	return node
