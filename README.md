@@ -13,3 +13,4 @@ Implementation of various algorithms and data structures, with the aim to learn 
 
 * [Big Oh Cheat Sheet](https://www.bigocheatsheet.com/)
 * [Solutions to Introduction to Algorithms (Third Edition)](https://walkccc.github.io/CLRS/)
+* [Hacker Rank (YouTube)](https://www.youtube.com/channel/UCOf7UPMHBjAavgD0Qw5q5ww/videos)
