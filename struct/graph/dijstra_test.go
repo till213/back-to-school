@@ -11,7 +11,7 @@ func TestClassicDijkstra(t *testing.T) {
 	g.ClassicDijkstra(start)
 
 	fmt.Println("---- Classic Dijkstra's Shortest Paths ----")
-	fmt.Println("Starting vertex:", start.name)
+	fmt.Println("Starting vertex:", start.Name)
 	fmt.Println(g.ToString())
 }
 
@@ -21,7 +21,7 @@ func TestFrontierDijkstra(t *testing.T) {
 	g.FrontierDijkstra(start)
 
 	fmt.Println("---- Frontier Dijkstra's Shortest Paths ----")
-	fmt.Println("Starting vertex:", start.name)
+	fmt.Println("Starting vertex:", start.Name)
 	fmt.Println(g.ToString())
 }
 

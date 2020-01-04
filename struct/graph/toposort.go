@@ -28,7 +28,6 @@ func dfs(v *Vertex, sorted *stack.Stack) (acyclic bool) {
 		if !acyclic {
 			break
 		}
-
 	}
 	v.Color = Black
 	sorted.Push(v)

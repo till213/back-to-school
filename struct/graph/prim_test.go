@@ -11,6 +11,6 @@ func TestPrim(t *testing.T) {
 	g.Prim(root)
 
 	fmt.Println("---- Minimum Spanning Tree (Prim) ----")
-	fmt.Println("Root vertex:", root.name)
+	fmt.Println("Root vertex:", root.Name)
 	fmt.Println(g.ToString())
 }

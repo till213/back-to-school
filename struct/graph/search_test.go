@@ -6,7 +6,7 @@ import (
 )
 
 func visit(v *Vertex) {
-	fmt.Println(v.name)
+	fmt.Println(v.Name)
 }
 
 func TestDFS(t *testing.T) {
