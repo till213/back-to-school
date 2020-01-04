@@ -64,3 +64,4 @@ apps/graph/minsearchtree/minsearchtree
 apps/graph/noderoute/noderoute
 apps/graph/successor/successor
 apps/graph/validbst/validbst
+apps/graph/buildorder/buildorder
