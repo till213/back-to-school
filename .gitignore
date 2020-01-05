@@ -72,3 +72,4 @@ apps/graph/pathwithsum/pathwithsum
 apps/graph/randomnodebst/randomnodebst
 apps/bits/insertion/insertion
 apps/bits/binarytostring/binarytostring
+apps/bits/fliptowin/fliptowin
