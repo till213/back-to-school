@@ -15,7 +15,6 @@ func max(a, b int) int {
 // Returns the length of the longest connected 1 bit sequence
 // when just one bit in m can be flipped to 1
 func bitFlipToWin(m int) int {
-
 	if m == ^0 {
 		// All 1s, which is already the longest sequence
 		return int(reflect.TypeOf(m).Size()) * 8
