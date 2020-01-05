@@ -58,7 +58,6 @@ func bitFlipToWin(m int) int {
 }
 
 func main() {
-
 	m := ^0
 	size := bitFlipToWin(m)
 	fmt.Println("Length:", size)
@@ -75,5 +74,4 @@ func main() {
 	m = -(1 + 2 + 8 + 16 + 32 + 64)
 	size = bitFlipToWin(m)
 	fmt.Println("Length:", size)
-
 }
