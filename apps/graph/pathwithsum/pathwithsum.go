@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 
 	"github.com/till213/back-to-school/data/tree"
 )
@@ -55,9 +56,10 @@ func pathWithSumCount(n *tree.Node, targetSum int) int {
 }
 
 func main() {
-	const targetSum = 3
-	sorted := []int{1, 2, 3}
-	root := tree.CreateBinarySearchTree(sorted, nil)
+	const targetSum = 10
+	rand.Seed(1001)
+	root := tree.CreateRandomTree(-16, 16, 5, nil)
+	tree.PrintTree(root, 0)
 
 	count := pathWithSumCount(root, targetSum)
 	fmt.Printf("Count of continuous paths with target sum %d: %d\n", targetSum, count)
