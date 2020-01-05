@@ -68,3 +68,4 @@ apps/graph/buildorder/buildorder
 apps/graph/commonancestor/commonancestor
 apps/graph/bstsequene/bstsequene
 apps/graph/checksubtree/checksubtree
+apps/graph/pathwithsum/pathwithsum
