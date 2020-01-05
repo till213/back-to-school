@@ -69,3 +69,4 @@ apps/graph/commonancestor/commonancestor
 apps/graph/bstsequene/bstsequene
 apps/graph/checksubtree/checksubtree
 apps/graph/pathwithsum/pathwithsum
+apps/graph/randomnodebst/randomnodebst
