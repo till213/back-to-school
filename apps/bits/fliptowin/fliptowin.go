@@ -26,7 +26,7 @@ func bitFlipToWin(m int) int {
 	// We can always flip one bit
 	maxLength := 1
 	// we insect on bit after another, starting with the LSB
-	for m > 0 {
+	for m != 0 {
 		if m&1 == 1 {
 			currentLength++
 		} else {
@@ -47,7 +47,12 @@ func bitFlipToWin(m int) int {
 		maxLength = max(maxLength, currentLength+previousLength+1)
 
 		// inspect next bit
-		m >>= 1
+		// We want 0s to be shifted in into the MSB -> "logical right shift"
+		// Note: Go does not seem to have an explicit "logical shift" operator:
+		//       https://golang.org/ref/spec#Arithmetic_operators
+		//       -> A right shift is automatically a logical right shift if the
+		//          operand is an unsigned value
+		m = int(uint(m) >> 1)
 	}
 	return maxLength
 }
@@ -64,6 +69,10 @@ func main() {
 	fmt.Println("Length:", size)
 
 	m = 0
+	size = bitFlipToWin(m)
+	fmt.Println("Length:", size)
+
+	m = -(1 + 2 + 8 + 16 + 32 + 64)
 	size = bitFlipToWin(m)
 	fmt.Println("Length:", size)
 
