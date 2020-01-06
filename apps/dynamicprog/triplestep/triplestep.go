@@ -22,7 +22,7 @@ func tripleStep(steps int) int {
 	case 2:
 		return 2
 	case 3:
-		return 3
+		return 4
 	default:
 		if memo[steps-1] == 0 {
 			memo[steps-1] = tripleStep(steps-1) + tripleStep(steps-2) + tripleStep(steps-3)
