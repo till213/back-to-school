@@ -76,3 +76,6 @@ apps/bits/fliptowin/fliptowin
 apps/bits/conversion/conversion
 apps/bits/pairswap/pairswap
 apps/bits/drawline/drawline
+apps/dynamicprog/knapsack/knapsack
+apps/greedy/fracknapsack/fracknapsack
+apps/slidingwindow/distinctkchars/distinctkchars
