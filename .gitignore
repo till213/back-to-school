@@ -79,3 +79,4 @@ apps/bits/drawline/drawline
 apps/dynamicprog/knapsack/knapsack
 apps/greedy/fracknapsack/fracknapsack
 apps/slidingwindow/distinctkchars/distinctkchars
+apps/dynamicprog/triplestep/triplestep
