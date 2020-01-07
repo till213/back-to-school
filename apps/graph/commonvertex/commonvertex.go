@@ -2,7 +2,7 @@ package main
 
 import (
 	"container/list"
-	"github.com/till213/back-to-school/struct/graph"
+	"github.com/till213/back-to-school/struct/graph/adjacency"
 	"fmt"
 	"os"
 )

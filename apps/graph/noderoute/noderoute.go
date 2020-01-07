@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/golang-collections/collections/stack"
-	"github.com/till213/back-to-school/struct/graph"
+	"github.com/till213/back-to-school/struct/graph/adjacency"
 	"fmt"
 	"os"
 )
