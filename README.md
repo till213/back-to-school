@@ -15,3 +15,7 @@ Implementation of various algorithms and data structures, with the aim to learn 
 * [Solutions to Introduction to Algorithms (Third Edition)](https://walkccc.github.io/CLRS/)
 * [Hacker Rank (YouTube)](https://www.youtube.com/channel/UCOf7UPMHBjAavgD0Qw5q5ww/videos)
 * [Algorithms (Khan Academy)](https://www.khanacademy.org/computing/computer-science/algorithms)
+
+## Go Specific Resources
+
+* [Slice Tricks (GitHub)](https://github.com/golang/go/wiki/SliceTricks)
