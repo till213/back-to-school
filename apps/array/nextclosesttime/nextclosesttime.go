@@ -5,9 +5,6 @@ import (
 	"sort"
 )
 
-// 09:xx, 19:xx, 2*3*:xx
-var maxNumbers [][]int
-
 const zero = '0'
 
 func timeToNumbers(time string) []int {
@@ -21,7 +18,8 @@ func timeToNumbers(time string) []int {
 
 func nextClosestTime(time string) string {
 
-	maxNumbers = [][]int{
+	// 09:xx, 19:xx, 2*3*:xx
+	maxNumbers := [][]int{
 		{2, 9, 5, 9},
 		{2, 9, 5, 9},
 		{2, 3, 5, 9},
@@ -48,13 +46,20 @@ func nextClosestTime(time string) string {
 				}
 			}
 		}
+		if !done {
+			// we cannot increase this number, so decrease it
+			// to the lowest possible number (in order to find
+			// the next "closest time"), which is simply
+			// the smallest number in the sorted slice
+			numbers[i] = sortedNumbers[0]
+		}
 	}
 	if !done {
 		// no number could be increased without exceeding
 		// any limit, so set *every* number to the lowest
 		// possible value (which must be either 0, 1 or 2
 		// from hour1)
-		for i := 0; i <=3; i++ {
+		for i := 0; i <= 3; i++ {
 			numbers[i] = sortedNumbers[0]
 		}
 	}
@@ -75,5 +80,10 @@ func main() {
 
 	time = "23:59"
 	next = nextClosestTime(time)
+	fmt.Println("Current:", time, "Next Time:", next)
+
+	time = "13:55"
+	next = nextClosestTime(time)
+	// Should be 15:11
 	fmt.Println("Current:", time, "Next Time:", next)
 }
