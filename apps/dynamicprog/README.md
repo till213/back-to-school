@@ -26,3 +26,8 @@ Example recursion tree for the [Climbing Stairs](https://leetcode.com/problems/c
 3. E.g. in the [Jump Game](https://leetcode.com/problems/jump-game/) we note that we can only ever move to the right
 4. This means that if we start from the right of the array, every time we will query a position to our right, that position has already be determined as being GOOD or BAD.
 5. There follows that we don't need to recurse anymore, as we will always hit the memo table.
+
+## Useful Resources
+
+* [Longest Common Subsequence (LCS) (YouTube - MIT Introduction to Algorithms)](https://www.youtube.com/embed/V5hZoJ6uK-s)
+* [Optimal Triangulation of a Convex Polygon (University of Texas, Austin)](https://www.cs.utexas.edu/users/djimenez/utsa/cs3343/lecture12.html)
