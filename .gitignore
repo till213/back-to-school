@@ -81,3 +81,4 @@ apps/greedy/fracknapsack/fracknapsack
 apps/slidingwindow/distinctkchars/distinctkchars
 apps/dynamicprog/triplestep/triplestep
 apps/backtracking/robotgrid/robotgrid
+apps/array/nextclosesttime/nextclosesttime
