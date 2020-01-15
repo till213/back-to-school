@@ -5,10 +5,13 @@ import (
 	"math"
 )
 
+// Vertex represents a point of the polygon.
 type Vertex struct {
 	x, y float64
 }
 
+// Cost represents the cost and the implementing vertex k which
+// minimises the triangulation costs.
 type Cost struct {
 	// the triangulation cost
 	cost float64
@@ -46,7 +49,7 @@ func printMemo(memo [][]Cost) {
 //
 // This implementation creates a somewhat smaller memo table (dimension #vertices-1),
 // but from which it is not so straight forward to reconstruct the triangulation:
-// the table indices do not correspond 1:1 to the indices into the vertices slice                     
+// the table indices do not correspond 1:1 to the indices into the vertices slice
 func iterativeTriangulation1(vertices []Vertex) [][]Cost {
 	n := len(vertices) - 1
 
@@ -65,12 +68,12 @@ func iterativeTriangulation1(vertices []Vertex) [][]Cost {
 	}
 
 	for l := 2; l <= n; l++ {
-		for i := 1; i <= n - l + 1; i++ {
+		for i := 1; i <= n-l+1; i++ {
 			j := i + l - 1
 			// index in memo starts at 0
 			memo[i-1][j-1].cost = math.MaxFloat64
 			memo[i-1][j-1].minK = -1
-			for k := i; k <= j - 1; k++ {
+			for k := i; k <= j-1; k++ {
 				q := memo[i-1][k-1].cost + memo[k][j-1].cost + cost(i-1, k, j, vertices)
 				if q < memo[i-1][j-1].cost {
 					memo[i-1][j-1].cost = q
@@ -83,39 +86,39 @@ func iterativeTriangulation1(vertices []Vertex) [][]Cost {
 }
 
 // https://www.geeksforgeeks.org/minimum-cost-polygon-triangulation/
-// http://www.cs.utoronto.ca/~heap/Courses/270F02/A4/chains/node2.html 
+// http://www.cs.utoronto.ca/~heap/Courses/270F02/A4/chains/node2.html
 func iterativeTriangulation2(vertices []Vertex) [][]Cost {
 
 	n := len(vertices)
 
-	// There must be at least 3 points to form a triangle 
+	// There must be at least 3 points to form a triangle
 	if n < 3 {
 		return [][]Cost{{Cost{0.0, 0}}}
 	}
 
-	// table to store results of subproblems.  table[i][j] stores cost of 
-	// triangulation of points from i to j.  The entry table[0][n-1] stores 
-	// the final result. 
+	// table to store results of subproblems.  table[i][j] stores cost of
+	// triangulation of points from i to j.  The entry table[0][n-1] stores
+	// the final result.
 	memo := make([][]Cost, n)
 	for i := 0; i < n; i++ {
 		memo[i] = make([]Cost, n)
 	}
 
-	// Fill table using the recursive cost formula. Note that the table 
-	// is filled in diagonal fashion i.e., from diagonal elements to 
+	// Fill table using the recursive cost formula. Note that the table
+	// is filled in diagonal fashion i.e., from diagonal elements to
 	// table[0][n-1] which is the result.
-	
+
 	// the gap defines the distance between the "fixed points" i and j
 	for gap := 0; gap < n; gap++ {
 		i := 0
 		for j := gap; j < n; j++ {
-			if j < i + 2 {
+			if j < i+2 {
 				// points and lines are not triangles and have hence
 				// a convenient cost of 0.0
 				memo[i][j] = Cost{0.0, -1}
-			} else { 
-				memo[i][j].cost = math.MaxFloat64;
-				// between this "gap" we iterate a third point k 
+			} else {
+				memo[i][j].cost = math.MaxFloat64
+				// between this "gap" we iterate a third point k
 				for k := i + 1; k < j; k++ {
 					// and we choose k such that it minimises the cost,
 					// which is the sum of triangulating the "left polygon",
@@ -123,22 +126,22 @@ func iterativeTriangulation2(vertices []Vertex) [][]Cost {
 					// triangle i, k, j (a given triangle divides a convex polygon
 					// into three parts: "left", "right" and the current triangle)
 					val := memo[i][k].cost + memo[k][j].cost + cost(i, k, j, vertices)
-					if (memo[i][j].cost > val) {
-						memo[i][j].cost = val; 
-						memo[i][j].minK = k; 
-					} 
-				} 
-			} 
+					if memo[i][j].cost > val {
+						memo[i][j].cost = val
+						memo[i][j].minK = k
+					}
+				}
+			}
 			i++
 		}
-	} 
-	return memo;
+	}
+	return memo
 }
 
 func printTriangulation(i, j int, memo [][]Cost) {
 	// Check if there is still a triangle left
 	if memo[i][j].minK != -1 {
- 		fmt.Printf("<%d, %d, %d>, ", i, memo[i][j].minK, j)
+		fmt.Printf("<%d, %d, %d>, ", i, memo[i][j].minK, j)
 		printTriangulation(i, memo[i][j].minK, memo)
 		printTriangulation(memo[i][j].minK, j, memo)
 	}
