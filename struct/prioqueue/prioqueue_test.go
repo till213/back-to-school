@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/till213/back-to-school/data/array"
-	"github.com/till213/back-to-school/struct/heap"
+	"github.com/till213/back-to-school/struct/tree/heap/binaryheap"
 )
 
 func TestPrioQueue(t *testing.T) {
@@ -52,7 +52,7 @@ func TestPrioQueue(t *testing.T) {
 
 func TestPrioQueueReverse(t *testing.T) {
 	var pq PrioQueue
-	a := array.Sorted(heap.M, false)
+	a := array.Sorted(binaryheap.M, false)
 
 	pq.Init()
 
@@ -65,7 +65,7 @@ func TestPrioQueueReverse(t *testing.T) {
 		t.Errorf("Prio Queue should be full")
 	}
 
-	for i := 0; i < heap.M; i++ {
+	for i := 0; i < binaryheap.M; i++ {
 		elt := pq.Min()
 		if elt != i {
 			t.Errorf("First prio element was %d, should be: %d", elt, i)

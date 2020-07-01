@@ -1,17 +1,19 @@
 // Package prioqueue provides a fixed-length priority queue using a heap.
 package prioqueue
 
-import "github.com/till213/back-to-school/struct/heap"
+import (
+	"github.com/till213/back-to-school/struct/tree/heap/binaryheap"
+)
 
 // PrioQueue structure
 type PrioQueue struct {
-	heap heap.Heap // Fixed-length heap
-	n    int       // Current number of elements
+	heap binaryheap.BinaryHeap // Fixed-length heap
+	n    int                   // Current number of elements
 }
 
 // Init initialises a new priority queue
 func (p *PrioQueue) Init() {
-	p.heap.Init()
+	p.heap.Create()
 	p.n = 0
 }
 
@@ -22,7 +24,7 @@ func (p *PrioQueue) Empty() bool {
 
 // Full returns true if the priority queue is full.
 func (p *PrioQueue) Full() bool {
-	return p.n == heap.M
+	return p.n == binaryheap.M
 }
 
 // Insert inserts element elt
