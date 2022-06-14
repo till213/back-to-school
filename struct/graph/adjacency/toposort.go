@@ -38,7 +38,7 @@ func dfs(v *Vertex, sorted *stack.Stack) (acyclic bool) {
 // the vertices in the graph. The boolean acyclic is true if no
 // circle has been detected, otherwise sorted contains
 // the vertices which form a closed circle (and acyclic is false).
-// Running time: O(E + V^)
+// Running time: O(E + V)
 func TopoSort(g *Graph) (vertices []*Vertex, acyclic bool) {
 	sorted := stack.New()
 
